@@ -10,19 +10,20 @@ router.get("/", function(req, res) {
 
 router.get('/burgers', function(req, res) {
     burgers.all(function(data) {
-        res.render("index"), {burger_data: data}
+        console.log(data)
+        res.render("index", {burger_data: data})
     })
 });
 
 router.post('/burgers', function(req, res) {
     burgers.create(req.body.burger_name, function(results) {
-        results.redirect("/");
+        res.redirect("/");
     })
 });
 
 router.patch('/burgers/:id', function(req, res) {
-    burgers.update(req.param.id, function(results) {
-        results.redirect("/");
+    burgers.update(req.params.id, function(results) {
+        res.sendStatus(200);
     })
 })
 

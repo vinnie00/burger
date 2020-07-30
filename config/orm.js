@@ -13,6 +13,7 @@ var orm = {
     },
 
     create: function(table, columns, values, cb) {
+        console.log(values)
         let insertData = `insert into ${table} (${columns.toString()}) values (${printQuestionMarks(values.length)})`
         connection.query(insertData, values, function(err, result) {
             if (err) {
